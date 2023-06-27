@@ -12,8 +12,17 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  Widget activeScreen = const StartScreen(switchScreen);
+  Widget? activeScreen;
+
   //switchScreen not parenthesis because it will execute. here only provides pointer.
+  @override
+  //provided by State Class so override.
+  //init state will execute once .
+  void initState() {
+    activeScreen = StartScreen(switchScreen);
+
+    super.initState();
+  }
 
   void switchScreen() {
     setState(() {
