@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({super.key});
+  const StartScreen(this.startQuiz, {super.key});
+//this to automatically set the values and only after that can be used in build method.
+  final void Function() startQuiz;
+
   @override
   Widget build(context) {
     return Center(
@@ -19,8 +22,14 @@ class StartScreen extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontSize: 24),
           ),
           const SizedBox(height: 10),
+          //Both METHOD RIGHT.
+
+          // OutlinedButton.icon(
+          //   onPressed: () {
+          //     startQuiz();
+          //   },
           OutlinedButton.icon(
-            onPressed: () {},
+            onPressed: startQuiz,
             icon: const Icon(Icons.arrow_right_alt),
             label: const Text(
               'Play the Quiz',
