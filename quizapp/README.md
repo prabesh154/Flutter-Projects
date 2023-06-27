@@ -1,16 +1,11 @@
 # quizapp
 
-A new Flutter project.
+Every Flutter Widget has a built-in lifecycle: A collection of methods that are automatically executed by Flutter (at certain points of time).
 
-## Getting Started
+There are three extremely important (stateful) widget lifecycle methods you should be aware of:
 
-This project is a starting point for a Flutter application.
+initState(): Executed by Flutter when the StatefulWidget's State object is initialized
 
-A few resources to get you started if this is your first Flutter project:
+build(): Executed by Flutter when the Widget is built for the first time AND after setState() was called
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+dispose(): Executed by Flutter right before the Widget will be deleted (e.g., because it was displayed conditionally)
