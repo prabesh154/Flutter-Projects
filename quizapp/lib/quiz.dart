@@ -12,21 +12,21 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  Widget? activeScreen;
+  var activeScreen = 'start-screen';
 
   //switchScreen not parenthesis because it will execute. here only provides pointer.
-  @override
+  //@override
   //provided by State Class so override.
   //init state will execute once .
-  void initState() {
-    activeScreen = StartScreen(switchScreen);
+  // void initState() {
+  //   activeScreen = StartScreen(switchScreen);
 
-    super.initState();
-  }
+  //   super.initState();
+  // }
 
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = 'quiz-screen';
     });
   }
 
@@ -43,7 +43,9 @@ class _QuizState extends State<Quiz> {
             end: Alignment.topRight,
           ),
         ),
-        child: activeScreen,
+        child: activeScreen == 'start-screen'
+            ? StartScreen(switchScreen)
+            : const QuestionsScreen(),
       ),
     ));
   }
