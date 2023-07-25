@@ -28,35 +28,40 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 10, 8, 8),
-        title: const Text(
-          'Instagram',
-          style: TextStyle(
-            decoration: TextDecoration.none,
-            fontFamily: billabong,
-            fontSize: 30,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add_box_outlined),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.favorite_border_outlined),
-            onPressed: () {},
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Image.asset(
-              icChat,
-              width: 24,
-              height: 24,
-              color: Colors.white,
+      appBar: PreferredSize(
+        preferredSize:
+            const Size.fromHeight(65.0), // Set your desired height here
+
+        child: AppBar(
+          backgroundColor: const Color.fromARGB(255, 10, 8, 8),
+          title: const Text(
+            'Instagram',
+            style: TextStyle(
+              decoration: TextDecoration.none,
+              fontFamily: billabong,
+              fontSize: 30,
             ),
-          )
-        ],
+          ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.add_box_outlined),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: const Icon(Icons.favorite_border_outlined),
+              onPressed: () {},
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Image.asset(
+                icChat,
+                width: 24,
+                height: 24,
+                color: Colors.white,
+              ),
+            )
+          ],
+        ),
       ),
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -72,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
           BottomNavigationBarItem(
