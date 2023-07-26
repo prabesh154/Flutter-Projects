@@ -6,7 +6,7 @@ class AddScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(child: Text('Add Screen')),
+      body: Center(child: Text('Shop Screen showing..')),
     );
   }
 }
