@@ -13,40 +13,80 @@ class _OnBoardingState extends State<OnBoarding> {
   var currentPosition = 0;
   int numPages = 3;
 
+  void skipFunction(int currentPosition) {
+    if (currentPosition < numPages - 1) {
+      setState(() {
+        currentPosition = numPages - 1;
+      });
+    }
+
+    pageController.animateToPage(currentPosition,
+        duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
+  }
+
+  void nextFunction(int currentPosition) {
+    if (currentPosition < numPages - 1) {
+      setState(() {
+        currentPosition++;
+      });
+
+      pageController.animateToPage(currentPosition,
+          duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const BottomNav(),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        onPageChanged: (value) {},
+        onPageChanged: (index) {
+          // Update the current position on page change
+          setState(() {
+            currentPosition = index;
+          });
+        },
         controller: pageController,
         children: [
           Container(
-              child: Column(
-            children: [
-              Image.asset('assets/images/makeup.png'),
-              const Text('Demo Title'),
-              const Text(
-                  'Hello I am this and Welcome to this application.Hope you will enjoy this.')
-            ],
-          )),
+            child: Column(
+              children: [
+                Image.asset('assets/images/makeup.png'),
+                const Text('Demo Title'),
+                const Text(
+                  'Hello I am this and Welcome to this application.Hope you will enjoy this.',
+                ),
+              ],
+            ),
+          ),
           Container(
-              child: Column(
-            children: [
-              Image.asset('assets/images/makeup.png'),
-              const Text('Demo Title Next'),
-              const Text(
-                  'Hello I am this and Welcome to this application.Hope you will enjoy this.')
-            ],
-          )),
+            child: Column(
+              children: [
+                Image.asset('assets/images/makeup.png'),
+                const Text('Demo Title Next'),
+                const Text(
+                  'Hello I am this and Welcome to this application.Hope you will enjoy this.',
+                ),
+              ],
+            ),
+          ),
           Container(
-              child: Column(
-            children: [
-              Image.asset('assets/images/makeup.png'),
-              const Text('Demo Title Furthur'),
-              const Text(
-                  'Hello I am this and Welcome to this application.Hope you will enjoy this.')
-            ],
-          )),
+            child: Column(
+              children: [
+                Image.asset('assets/images/makeup.png'),
+                const Text('Demo Title Furthur'),
+                const Text(
+                  'Hello I am this and Welcome to this application.Hope you will enjoy this.',
+                ),
+              ],
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: Row(
@@ -54,36 +94,13 @@ class _OnBoardingState extends State<OnBoarding> {
         children: [
           MaterialButton(
             onPressed: () {
-              if (currentPosition < numPages - 1) {
-                setState(() {
-                  currentPosition = numPages - 1;
-                });
-              }
-
-              pageController.animateToPage(currentPosition,
-                  duration: const Duration(milliseconds: 400),
-                  curve: Curves.easeInOut);
+              skipFunction(currentPosition);
             },
             child: Text(currentPosition == numPages - 1 ? '' : 'Skip'),
           ),
           MaterialButton(
             onPressed: () {
-              if (currentPosition < numPages - 1) {
-                setState(() {
-                  currentPosition++;
-                });
-
-                pageController.animateToPage(currentPosition,
-                    duration: const Duration(milliseconds: 400),
-                    curve: Curves.easeInOut);
-              } else {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const BottomNav(),
-                  ),
-                );
-              }
+              nextFunction(currentPosition);
             },
             child:
                 Text(currentPosition < numPages - 1 ? 'Next' : "Let's Start"),
