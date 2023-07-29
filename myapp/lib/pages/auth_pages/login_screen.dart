@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/consts/consts.dart';
 import 'package:myapp/pages/home_screen/home_screen.dart';
 
+// s
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -104,8 +105,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                HomeScreen(userName: usernameController.text),
+                            builder: (context) => const HomeScreen(),
+                            //  HomeScreen(userName: usernameController.text),
                           ),
                         );
                       }

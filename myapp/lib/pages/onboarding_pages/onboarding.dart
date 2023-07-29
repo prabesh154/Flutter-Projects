@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/home_screen/home_screen.dart';
+import 'package:myapp/pages/home_screen/components/bottom_nav_widget.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -80,9 +80,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const HomeScreen(
-                      userName: '',
-                    ),
+                    builder: (context) => const BottomNav(),
                   ),
                 );
               }
