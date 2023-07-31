@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/models/models.dart';
+import 'package:myapp/models/pageviewer_models.dart';
 import 'package:myapp/pages/home_screen/details_screen_pageview.dart';
 import '../profile_screen/profile_screen.dart';
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/models/tab_listtiles_models.dart';
 import 'package:myapp/pages/bookmarks_screen/bookmarks_screen.dart';
 import 'package:myapp/pages/home_screen/home_screen.dart';
 
@@ -18,7 +19,9 @@ class _BottomNavState extends State<BottomNav> {
   final List<Widget> screens = [
     const HomeScreen(),
     const BookmarksScreen(),
-    const ShopScreen(),
+    // ignore: prefer_const_constructors
+    const ShopScreen(), // Pass the dataList to ShopScreen
+
     const SettingsScreen()
   ];
 
