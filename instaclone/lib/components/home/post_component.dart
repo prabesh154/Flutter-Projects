@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../models/post.dart';
 
@@ -11,6 +12,9 @@ class PostComponent extends StatefulWidget {
 }
 
 class _PostComponentState extends State<PostComponent> {
+  final PageController _pageController =
+      PageController(); // Declare the PageController
+
   bool isliked = false;
 
   void likedChange() {
@@ -46,11 +50,19 @@ class _PostComponentState extends State<PostComponent> {
               color: Colors.black,
             ),
           ),
-          Image.network(
-            widget.post.imageUrl,
+          SizedBox(
             height: 320,
             width: double.infinity,
-            fit: BoxFit.cover,
+            child: PageView.builder(
+              controller: _pageController, // Use the PageController
+              itemCount: 4,
+              itemBuilder: (context, index) {
+                return Image.network(
+                  widget.post.imageUrl,
+                  fit: BoxFit.cover,
+                );
+              },
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(2.0),
@@ -77,6 +89,12 @@ class _PostComponentState extends State<PostComponent> {
                   icon: const Icon(
                     Icons.send_outlined,
                     size: 30,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 32),
+                  child: Container(
+                    child: _buildPageIndicator(),
                   ),
                 ),
                 const Spacer(),
@@ -127,6 +145,41 @@ class _PostComponentState extends State<PostComponent> {
                     ],
                   ),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text('View all ${widget.post.totalComments} comments'),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text('${widget.post.postedTimeAgo} days ago')
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPageIndicator() {
+    return SmoothPageIndicator(
+      controller: _pageController, // Use the same PageController
+      count: 4,
+      effect: const SlideEffect(
+        activeDotColor: Color.fromARGB(255, 63, 114, 208),
+        dotColor: Colors.grey,
+        spacing: 6,
+        dotWidth: 8,
+        dotHeight: 8,
+      ),
+      onDotClicked: (index) {},
+    );
+  }
+}
+
+
+
+
 
                 // RichText(
                 //   text: const TextSpan(
@@ -149,19 +202,3 @@ class _PostComponentState extends State<PostComponent> {
                 //     ],
                 //   ),
                 // ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text('View all ${widget.post.totalComments} comments'),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text('${widget.post.postedTimeAgo} days ago')
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
