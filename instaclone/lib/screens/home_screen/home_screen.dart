@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         SliverList(
-          key: const Key('sliverlist_posts'), // Unique key for posts list
+          key: const Key(''), // Unique key for posts list
           delegate: SliverChildBuilderDelegate((context, index) {
             return PostComponent(post: postList[index]);
           }, childCount: postList.length),

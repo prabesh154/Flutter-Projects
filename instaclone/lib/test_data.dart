@@ -92,7 +92,7 @@ List<Post> postList = [
       'Hello Hi there!',
       'Kathmandu',
       'Beautiful weather here',
-      '2 days ago',
+      '2',
       '133',
       '22',
       false,
